@@ -12,7 +12,7 @@
 
 enum E_GTA_MAPZON_LEVEL {
     GTA_MAPZON_LEVEL_INVALID = -1,
-    GTA_MAPZON_LEVEL_DEFAULT = 0,
+    GTA_MAPZON_LEVEL_COUNTRYSIDE = 0,
     GTA_MAPZON_LEVEL_LOS_SANTOS,
     GTA_MAPZON_LEVEL_SAN_FIERRO,
     GTA_MAPZON_LEVEL_LAS_VENTURAS
@@ -256,7 +256,7 @@ static stock bool:MapZon_ParseLine(const line[], zone) {
     if(!MapZon_ParseInteger(fields[8], level))
         return false;
 
-    if(level < _:GTA_MAPZON_LEVEL_DEFAULT || level > _:GTA_MAPZON_LEVEL_LAS_VENTURAS) {
+    if(level < _:GTA_MAPZON_LEVEL_COUNTRYSIDE || level > _:GTA_MAPZON_LEVEL_LAS_VENTURAS) {
         return false;
     }
 
@@ -391,7 +391,7 @@ stock E_GTA_MAPZON_LEVEL:GetMapZonLevelAt(Float:x, Float:y, Float:z) {
     new zone = GetMapZonIndexAt(x, y, z);
 
     if(zone == -1)
-        return GTA_MAPZON_LEVEL_DEFAULT;
+        return GTA_MAPZON_LEVEL_COUNTRYSIDE;
 
     return gMapZonZones[zone][GTA_MZ_LEVEL];
 }
